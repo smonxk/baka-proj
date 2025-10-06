@@ -111,7 +111,7 @@ app.post("/submit-goal-result", async (req, res) => {
   const dosazeno = req.body.dosazeno === "true"; // Convert string to boolean
 
   try {
-    await db.query("UPDATE uzivatel SET dosazeno = $1 WHERE id = $2", [dosazeno, userId]);
+    await db.query("UPDATE uzivatele SET dosazeno = $1 WHERE id = $2", [dosazeno, userId]);
     res.redirect("/home");
   } catch (err) {
     console.error("Error saving goal result:", err);
