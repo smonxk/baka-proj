@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+<div class="container mt-5">
+  <h1>Register</h1>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+
+          <!-- Makes POST request to /register route -->
+          <form action="/register" method="POST">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email" maxlength="100">
+            </div>
+             <div class="form-group">
+              <label for="jmeno">Name</label>
+              <input type="text" class="form-control" name="jmeno" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label for="typ">Study type</label>
+                <select class="form-control" name="typ" id="type">
+                    <option value="T">Traditional</option>
+                    <option value="G">Gamificaton</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label for="cil">Goal</label>
+              <textarea class="form-control" name="cil" maxlength="125" placeholder="eg. Gain 5000XP / Understand my friends"></textarea>
+            <div class="form-group">
+              <label for="heslo">Password</label>
+              <input type="password" class="form-control" name="heslo" maxlength="50">
+            </div>
+            <button type="submit" class="btn btn-dark">Register</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%- include('partials/header') %>

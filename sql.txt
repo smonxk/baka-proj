@@ -1,0 +1,58 @@
+CREATE TABLE dny (
+    cislo SERIAL NOT NULL
+);
+ALTER TABLE dny ADD CONSTRAINT pk_dny PRIMARY KEY (cislo);
+
+
+CREATE TABLE uzivatel (
+    id SERIAL NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    jmeno VARCHAR(20) NOT NULL,
+    typ CHAR(1) NOT NULL,
+    cil VARCHAR(125) NOT NULL
+);
+ALTER TABLE uzivatel ADD CONSTRAINT pk_uzivatel PRIMARY KEY (id);
+
+CREATE TABLE kalendar (
+    cislo INTEGER NOT NULL,
+    id INTEGER NOT NULL,
+    motivace INTEGER NOT NULL CHECK (motivace BETWEEN 0 AND 5),
+    spokojenost INTEGER NOT NULL CHECK (spokojenost BETWEEN 0 AND 5)
+);
+ALTER TABLE kalendar ADD CONSTRAINT pk_kalendar PRIMARY KEY (cislo, id);
+ALTER TABLE kalendar ADD CONSTRAINT fk_kalendar_dny FOREIGN KEY (cislo) REFERENCES dny (cislo) ON DELETE CASCADE;
+ALTER TABLE kalendar ADD CONSTRAINT fk_kalendar_uzivatel FOREIGN KEY (id) REFERENCES uzivatel (id) ON DELETE CASCADE;
+
+
+
+pro sqlite
+-- Tabulka dny
+CREATE TABLE dny (
+    cislo INTEGER PRIMARY KEY
+);
+
+-- Tabulka uzivatel
+CREATE TABLE uzivatel (
+    id INTEGER PRIMARY KEY,
+    email VARCHAR(50) NOT NULL,
+    jmeno VARCHAR(20) NOT NULL,
+    typ CHAR(1) NOT NULL,
+    cil VARCHAR(125) NOT NULL
+);
+
+-- Tabulka kalendar
+CREATE TABLE kalendar (
+    cislo INTEGER NOT NULL,
+    id INTEGER NOT NULL,
+    motivace INTEGER NOT NULL CHECK (motivace BETWEEN 0 AND 5),
+    spokojenost INTEGER NOT NULL CHECK (spokojenost BETWEEN 0 AND 5),
+    PRIMARY KEY (cislo, id),
+    FOREIGN KEY (cislo) REFERENCES dny(cislo) ON DELETE CASCADE,
+    FOREIGN KEY (id) REFERENCES uzivatel(id) ON DELETE CASCADE
+);
+
+PG_USER="postgres"
+PG_HOST="localhost"
+PG_DATABASE="bakalarka"
+PG_PASSWORD="sypzoV-7xynwy-vunmag"
+PG_PORT="5432"

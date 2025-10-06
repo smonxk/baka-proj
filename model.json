@@ -1,0 +1,191 @@
+{
+  "entities": [
+    {
+      "name": "Den",
+      "parent": null,
+      "attr": [
+        {
+          "name": "cislo",
+          "primary": true,
+          "unique": false,
+          "nullable": false,
+          "type": null
+        }
+      ],
+      "transform": {
+        "x": 986,
+        "y": 101.21875,
+        "width": 124,
+        "height": 158
+      }
+    },
+    {
+      "name": "Kalendar",
+      "parent": null,
+      "attr": [
+        {
+          "name": "motivace",
+          "primary": false,
+          "unique": false,
+          "nullable": false,
+          "type": null
+        },
+        {
+          "name": "spokojenost",
+          "primary": false,
+          "unique": false,
+          "nullable": false,
+          "type": null
+        }
+      ],
+      "transform": {
+        "x": 654,
+        "y": 104.21875,
+        "width": 123,
+        "height": 154
+      }
+    },
+    {
+      "name": "Uzivatel",
+      "parent": null,
+      "attr": [
+        {
+          "name": "id",
+          "primary": true,
+          "unique": false,
+          "nullable": false,
+          "type": null
+        },
+        {
+          "name": "email",
+          "primary": false,
+          "unique": false,
+          "nullable": false,
+          "type": null
+        },
+        {
+          "name": "jmeno",
+          "primary": false,
+          "unique": false,
+          "nullable": false,
+          "type": null
+        },
+        {
+          "name": "typ",
+          "primary": false,
+          "unique": false,
+          "nullable": false,
+          "type": null
+        },
+        {
+          "name": "cil",
+          "primary": false,
+          "unique": false,
+          "nullable": false,
+          "type": null
+        }
+      ],
+      "transform": {
+        "x": 321,
+        "y": 103.21875,
+        "width": 126,
+        "height": 159
+      }
+    }
+  ],
+  "relations": [
+    [
+      {
+        "entity": "Kalendar",
+        "identifying": true,
+        "optional": false,
+        "cardinality": 0,
+        "xor": null,
+        "name": null,
+        "transform": {
+          "anchor": {
+            "x": 777,
+            "y": 181.21875,
+            "edge": 1
+          },
+          "points": [
+            {
+              "x": 881.5,
+              "y": 180.71875
+            }
+          ],
+          "manual": false
+        }
+      },
+      {
+        "entity": "Den",
+        "identifying": false,
+        "optional": true,
+        "cardinality": 1,
+        "xor": null,
+        "name": null,
+        "transform": {
+          "anchor": {
+            "x": 986,
+            "y": 180.21875,
+            "edge": 3
+          },
+          "points": [
+            {
+              "x": 881.5,
+              "y": 180.71875
+            }
+          ],
+          "manual": false
+        }
+      }
+    ],
+    [
+      {
+        "entity": "Uzivatel",
+        "identifying": false,
+        "optional": true,
+        "cardinality": 1,
+        "xor": null,
+        "name": null,
+        "transform": {
+          "anchor": {
+            "x": 447,
+            "y": 182.71875,
+            "edge": 1
+          },
+          "points": [
+            {
+              "x": 550.5,
+              "y": 181.96875
+            }
+          ],
+          "manual": false
+        }
+      },
+      {
+        "entity": "Kalendar",
+        "identifying": true,
+        "optional": false,
+        "cardinality": 0,
+        "xor": null,
+        "name": null,
+        "transform": {
+          "anchor": {
+            "x": 654,
+            "y": 181.21875,
+            "edge": 3
+          },
+          "points": [
+            {
+              "x": 550.5,
+              "y": 181.96875
+            }
+          ],
+          "manual": false
+        }
+      }
+    ]
+  ],
+  "notes": []
+}

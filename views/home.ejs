@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+
+<header class="dashboard-header">
+  <div class="header-left">
+    <span><%= user.typ === 'G' ? 'Gamification' : 'Traditional' %></span>
+  </div>
+  <div class="header-center">
+    <h4><%= user.jmeno %></h4>
+  </div>
+  <div class="header-right">
+    <a href="/logout" class="logout-btn">Log Out</a>
+  </div>
+</header>
+
+<div class="user-info mb-4">
+  <h2><%= user.jmeno %>, this is your calendar.</h2>
+  <p class="goal-text">Your goal is: <%= user.cil %></p>
+</div>
+
+<div class="calendar-grid">
+  <% daysData.forEach(day => { %>
+    <div class="day-cell">
+      <div class="day-number"><%= day.cislo %></div>
+      <form action="/save-day" method="POST" class="day-form">
+        <input type="hidden" name="cislo" value="<%= day.cislo %>">
+        <label>Motivace:</label>
+        <select name="motivace">
+          <% for(let i=0; i<=5; i++) { %>
+            <option value="<%= i %>" <%= i === day.motivace ? 'selected' : '' %>><%= i %></option>
+          <% } %>
+        </select>
+        <label>Spokojenost:</label>
+        <select name="spokojenost">
+          <% for(let i=0; i<=5; i++) { %>
+            <option value="<%= i %>" <%= i === day.spokojenost ? 'selected' : '' %>><%= i %></option>
+          <% } %>
+        </select>
+        <button type="submit">Uložit</button>
+      </form>
+    </div>
+  <% }) %>
+</div>
+
+<% if (goalReachedPrompt && user.dosazeno === null) { %>
+  <div class="goal-question mt-5">
+    <h4>Did you reach your goal?</h4>
+    <form action="/submit-goal-result" method="POST">
+      <select name="dosazeno" required>
+        <option value="">Select</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+      <button type="submit" class="btn btn-dark mt-2">Submit</button>
+    </form>
+  </div>
+<% } else if (user.dosazeno !== null) { %>
+  <div class="goal-question mt-5">
+    <p><strong>Goal completed?</strong> <%= user.dosazeno ? "Yes 🎉" : "No 😔" %></p>
+  </div>
+<% } %>
+
+
+<%- include('partials/footer') %>
