@@ -6,14 +6,18 @@ import passport from "passport";
 import {Strategy} from "passport-local";
 import env from "dotenv";
 import bcrypt from "bcrypt";
+import path from "path";
+import {fileURLToPath} from "url";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = 3000;
 const saltRounds = 10;
 env.config({ quiet: true });
 app.set("view engine", "ejs");
-
+app.set("views", path.join(__dirname, "views"));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
