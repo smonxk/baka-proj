@@ -6,7 +6,6 @@ import passport from "passport";
 import {Strategy} from "passport-local";
 import env from "dotenv";
 import bcrypt from "bcrypt";
-import env from "dotenv";
 
 
 const app = express();
